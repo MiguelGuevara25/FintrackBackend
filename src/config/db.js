@@ -1,10 +1,21 @@
 import { Sequelize } from "sequelize";
 
-const sequelize = new Sequelize("finTrack", "postgres", "root", {
-  host: "localhost",
-  dialect: "postgres",
-  port: 5432,
-});
+const sequelize = new Sequelize(
+  "fintrack_xj9l",
+  "fintrack_xj9l_user",
+  "Vp3WqtXZqIXLapd10FnNv9Tc8w2bY5PX",
+  {
+    host: "dpg-d1qomsmmcj7s73988pmg-a.oregon-postgres.render.com",
+    dialect: "postgres",
+    port: 5432,
+    dialectOptions: {
+      ssl: {
+        require: true, // Requiere SSL
+        rejectUnauthorized: false, // Permite conexiones no verificadas (útil en algunos entornos)
+      },
+    },
+  }
+);
 
 const connectDB = async () => {
   try {
