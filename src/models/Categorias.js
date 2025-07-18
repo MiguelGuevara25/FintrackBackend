@@ -1,8 +1,8 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/db.js";
 
-const Roles = sequelize.define(
-  "Roles",
+const Categorias = sequelize.define(
+  "Categorias",
   {
     id: {
       type: DataTypes.INTEGER,
@@ -10,16 +10,16 @@ const Roles = sequelize.define(
       autoIncrement: true,
     },
 
-    name: {
+    nombre: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
     },
   },
   {
-    tableName: "roles",
+    tableName: "categorias",
     timestamps: false,
   }
 );
 
-export default Roles;
+export default Categorias;
