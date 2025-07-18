@@ -9,7 +9,7 @@ export const obtenerUsuarios = async (req, res) => {
     res.json(datos);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Error al obtener las conexiones" });
+    res.status(500).json({ message: "Error al obtener los usuarios" });
   }
 };
 

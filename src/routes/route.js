@@ -6,6 +6,7 @@ import {
   obtenerUsuarios,
 } from "../controllers/usuarios.controller.js";
 import { obtenerCategorias } from "../controllers/categorias.controller.js";
+import { obtenerGastos } from "../controllers/gastos.controller.js";
 
 const router = express.Router();
 
@@ -16,5 +17,7 @@ router.delete("/usuarios/:id", eliminarUsuario);
 router.post("/login", login);
 
 router.get("/categorias", obtenerCategorias);
+
+router.get("/gastos", obtenerGastos);
 
 export default router;

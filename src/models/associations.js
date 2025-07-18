@@ -1,13 +1,18 @@
-import Usuarios from "./Usuarios.js";
 import Roles from "./Roles.js";
+import Gastos from "./Gastos.js";
+import Usuarios from "./Usuarios.js";
+import Categorias from "./Categorias.js";
 
-Roles.hasMany(Usuarios, {
-  foreignKey: "roleId",
-  sourceKey: "id",
-});
-Usuarios.belongsTo(Roles, {
-  foreignKey: "roleId",
-  targetKey: "id",
-});
+// Usuario - Rol
+Roles.hasMany(Usuarios, { foreignKey: "roleId" });
+Usuarios.belongsTo(Roles, { foreignKey: "roleId" });
 
-export { Roles, Usuarios };
+// Usuario - Gasto
+Usuarios.hasMany(Gastos, { foreignKey: "usuarioId" });
+Gastos.belongsTo(Usuarios, { foreignKey: "usuarioId" });
+
+// Categoría - Gasto
+Categorias.hasMany(Gastos, { foreignKey: "categoriaId" });
+Gastos.belongsTo(Categorias, { foreignKey: "categoriaId" });
+
+export { Usuarios, Roles, Gastos, Categorias };
