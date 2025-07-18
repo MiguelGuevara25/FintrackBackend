@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/db.js";
+import Roles from "./Roles.js";
 
 const Usuarios = sequelize.define(
   "Usuarios",
@@ -40,6 +41,15 @@ const Usuarios = sequelize.define(
     saldo_inicial: {
       type: DataTypes.DECIMAL(10, 2),
       defaultValue: 0.0,
+    },
+
+    roleId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: Roles,
+        key: "id",
+      },
+      allowNull: false,
     },
   },
   {
