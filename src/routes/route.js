@@ -6,7 +6,7 @@ import {
   obtenerUsuarios,
 } from "../controllers/usuarios.controller.js";
 import { obtenerCategorias } from "../controllers/categorias.controller.js";
-import { obtenerGastos } from "../controllers/gastos.controller.js";
+import { agregarGasto, obtenerGastos } from "../controllers/gastos.controller.js";
 
 const router = express.Router();
 
@@ -19,5 +19,6 @@ router.post("/login", login);
 router.get("/categorias", obtenerCategorias);
 
 router.get("/gastos", obtenerGastos);
+router.post("/gastos", agregarGasto);
 
 export default router;
