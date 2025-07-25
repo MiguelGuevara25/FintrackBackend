@@ -1,15 +1,11 @@
 import { Sequelize } from "sequelize";
 
-const sequelize = new Sequelize(
-  "finTrack",
-  "postgres",
-  "root",
-  {
-    host: "localhost",
-    dialect: "postgres",
-    port: 5432,
-  }
-);
+const sequelize = new Sequelize("finTrack", "postgres", "root", {
+  host: "localhost",
+  dialect: "postgres",
+  logging: false,
+  port: 5432,
+});
 
 const connectDB = async () => {
   try {

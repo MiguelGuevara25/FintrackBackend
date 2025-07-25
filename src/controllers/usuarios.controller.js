@@ -71,21 +71,28 @@ export const login = async (req, res) => {
     }
 
     const token = jwt.sign(
-      { userId: usuario.id, role: usuario.Role.name },
+      {
+        userId: usuario.id,
+        username: usuario.username,
+        role: usuario.Role.name,
+      },
       "secretKey",
       {
         expiresIn: "1h",
       }
     );
 
+    res.cookie("token", token, {
+      httpOnly: true, // más seguro (no accesible por JavaScript)
+      secure: false, // solo true en HTTPS
+      sameSite: "lax",
+      path: "/",
+      maxAge: 60 * 60 * 1000, // 1 hora
+    });
+
     res.json({
       message: "Login exitoso",
       token,
-      role: usuario.Role.name,
-      usuario: {
-        id: usuario.id,
-        username: usuario.username,
-      },
     });
   } catch (error) {
     console.error(error);

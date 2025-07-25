@@ -6,19 +6,27 @@ import { seedCategorias } from "./src/seeders/categorias.js";
 import "./src/models/associations.js";
 import { seedRoles } from "./src/seeders/roles.js";
 import { seedAdmin } from "./src/seeders/admin.js";
+import cookieParser from "cookie-parser";
 
 const app = express();
 const port = 3000;
-app.use(express.json());
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:4200",
+    credentials: true,
+  })
+);
+
+app.use(cookieParser());
+app.use(express.json());
 
 app.use("/api", router);
 
 try {
   await sequelize.authenticate();
   console.log("✅ Conexión a PostgreSQL establecida correctamente");
-  await sequelize.sync({ alter: true });
+  await sequelize.sync();
   await seedCategorias();
   await seedRoles();
   await seedAdmin();
